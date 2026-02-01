@@ -6,18 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ToDoBackupService  {
-    private final List<ToDoRepository> repositories;
 
-    public ToDoBackupService(List<ToDoRepository> repositories) {
-        this.repositories = repositories;
-    }
-
-    public void saveTaskToAllRepositories(String task) {
-        System.out.println("Backup Service: розпочато збереження");
-        repositories.forEach(repo -> repo.save(task));
-    }
+public interface ToDoBackupService {
+    void saveTaskToAllRepositories(String task);
 }
 //    @Override
 //    public void createAndGetCity() {

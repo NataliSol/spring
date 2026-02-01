@@ -20,16 +20,34 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TodolistApplication implements CommandLineRunner {
 
-     private final ToDoBackupService toDoBackupService;
+//    private final ToDoBackupService toDoBackupService;
+//
+//    public TodolistApplication(ToDoBackupService toDoBackupService) {
+//        this.toDoBackupService = toDoBackupService;
+//    }
+//
+//    public static void main(String[] args) {
+//        SpringApplication.run(TodolistApplication.class, args);
+//    }
+//
+//
+//    @Override
+//    public void run(String... args) throws Exception {
+//        System.out.println("--- Запускаємо додаток ---");
+//        toDoBackupService.saveTaskToAllRepositories("Зробити резервну копію даних");
+//        System.out.println("--- Завершення роботи ---");
+//    }
+
+    private final ToDoBackupService toDoBackupService; // Вказуємо інтерфейс
 
     public TodolistApplication(ToDoBackupService toDoBackupService) {
         this.toDoBackupService = toDoBackupService;
     }
 
+
     public static void main(String[] args) {
         SpringApplication.run(TodolistApplication.class, args);
     }
-
 
     @Override
     public void run(String... args) throws Exception {
