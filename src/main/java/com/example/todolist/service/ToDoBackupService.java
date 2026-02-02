@@ -1,10 +1,5 @@
 package com.example.todolist.service;
 
-import com.example.todolist.repository.FileBasedToDoRepository;
-import com.example.todolist.repository.ToDoRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 public interface ToDoBackupService {

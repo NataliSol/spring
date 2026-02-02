@@ -13,6 +13,7 @@ package com.example.todolist;
 
 
 import com.example.todolist.service.ToDoBackupService;
+import com.example.todolist.service.ToDoService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -38,12 +39,14 @@ public class TodolistApplication implements CommandLineRunner {
 //        System.out.println("--- Завершення роботи ---");
 //    }
 
-    private final ToDoBackupService toDoBackupService; // Вказуємо інтерфейс
+    private final ToDoService toDoService; // Вказуємо інтерфейс
 
-    public TodolistApplication(ToDoBackupService toDoBackupService) {
-        this.toDoBackupService = toDoBackupService;
+//    public TodolistApplication(ToDoBackupService toDoBackupService) {
+//        this.toDoBackupService = toDoBackupService;
+//    }
+    public TodolistApplication(ToDoService toDoService) {
+        this.toDoService = toDoService;
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(TodolistApplication.class, args);
@@ -52,7 +55,7 @@ public class TodolistApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("--- Запускаємо додаток ---");
-        toDoBackupService.saveTaskToAllRepositories("Зробити резервну копію даних");
+        toDoService.createAndGetCity();
         System.out.println("--- Завершення роботи ---");
     }
 }
