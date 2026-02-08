@@ -1,24 +1,51 @@
 package com.example.todolist;
 
-import com.example.todolist.repository.ToDoRepository;
-import com.example.todolist.service.DeveloperInfoService;
+//import com.example.todolist.repository.ToDoRepository;
+//import com.example.todolist.service.DeveloperInfoService;
+//import com.example.todolist.service.ToDoBackupService;
+//import org.springframework.boot.CommandLineRunner;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import com.example.todolist.service.AppInfoService;
+//
+//@SpringBootApplication
+//public class TodolistApplication implements CommandLineRunner {
+
+
+import com.example.todolist.service.ToDoBackupService;
+import com.example.todolist.service.ToDoService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.example.todolist.service.AppInfoService;
 
 @SpringBootApplication
 public class TodolistApplication implements CommandLineRunner {
 
-    private final AppInfoService appInfoService;
-    private final DeveloperInfoService developerInfoService;
-    private final ToDoRepository toDoRepository;
+//    private final ToDoBackupService toDoBackupService;
+//
+//    public TodolistApplication(ToDoBackupService toDoBackupService) {
+//        this.toDoBackupService = toDoBackupService;
+//    }
+//
+//    public static void main(String[] args) {
+//        SpringApplication.run(TodolistApplication.class, args);
+//    }
+//
+//
+//    @Override
+//    public void run(String... args) throws Exception {
+//        System.out.println("--- Запускаємо додаток ---");
+//        toDoBackupService.saveTaskToAllRepositories("Зробити резервну копію даних");
+//        System.out.println("--- Завершення роботи ---");
+//    }
 
-    public TodolistApplication(AppInfoService appInfoService, DeveloperInfoService developerInfoService,
-                               ToDoRepository toDoRepository) {
-        this.appInfoService = appInfoService;
-        this.developerInfoService = developerInfoService;
-        this.toDoRepository=toDoRepository;
+    private final ToDoService toDoService; // Вказуємо інтерфейс
+
+//    public TodolistApplication(ToDoBackupService toDoBackupService) {
+//        this.toDoBackupService = toDoBackupService;
+//    }
+    public TodolistApplication(ToDoService toDoService) {
+        this.toDoService = toDoService;
     }
 
     public static void main(String[] args) {
@@ -28,9 +55,7 @@ public class TodolistApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("--- Запускаємо додаток ---");
-        System.out.println(appInfoService.getAppInfo());
-        System.out.println(toDoRepository.getCityTask());
-        System.out.println(developerInfoService.getAppInfo());
+        toDoService.createAndGetCity();
         System.out.println("--- Завершення роботи ---");
     }
 }

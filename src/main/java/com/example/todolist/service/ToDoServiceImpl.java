@@ -1,16 +1,20 @@
 package com.example.todolist.service;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.example.todolist.repository.ToDoRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ToDoServiceImpl implements ToDoService{
+public class ToDoServiceImpl implements ToDoService {
 
-    @Value("${app.city}")
-    private String appCity;
+    private final ToDoRepository toDoRepository;
+
+    public ToDoServiceImpl(ToDoRepository toDoRepository) {
+        this.toDoRepository = toDoRepository;
+    }
 
     @Override
     public void createAndGetCity() {
-
+        toDoRepository.addTask();
     }
 }
+
